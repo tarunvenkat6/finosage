@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinoSage - AI Portfolio Builder</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/portfolio-builder.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body data-theme="light">
+    <!-- Dynamic Background -->
+    <div class="dynamic-background">
+        <div class="gradient-orb"></div>
+        <div class="gradient-orb"></div>
+        <div class="gradient-orb"></div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-chart-line"></i>
+                <span>FinoSage</span>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="advisor.html" class="nav-link">AI Advisor</a>
+                <a href="portfolio-dashboard.html" class="nav-link">Dashboard</a>
+                <a href="portfolio-analyzer.html" class="nav-link">Analyzer</a>
+                <a href="portfolio-builder.html" class="nav-link active">Portfolio Builder</a>
+                <div class="user-dropdown">
+                    <button class="user-btn">
+                        <div class="user-avatar">JS</div>
+                        <span>John Smith</span>
+                        <i class="fas fa-angle-down"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item"><i class="fas fa-user"></i> Profile</a>
+                        <a href="#" class="dropdown-item"><i class="fas fa-cog"></i> Settings</a>
+                        <a href="#" class="dropdown-item"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>AI Portfolio Builder</h1>
+            <p>Get personalized investment recommendations powered by AI</p>
+        </header>
+
+        <div class="progress-bar">
+            <div class="progress-step active" data-step="1">
+                <div class="step-number">1</div>
+                <div class="step-label">Profile</div>
+            </div>
+            <div class="progress-step" data-step="2">
+                <div class="step-number">2</div>
+                <div class="step-label">Risk</div>
+            </div>
+            <div class="progress-step" data-step="3">
+                <div class="step-number">3</div>
+                <div class="step-label">Financial</div>
+            </div>
+            <div class="progress-step" data-step="4">
+                <div class="step-number">4</div>
+                <div class="step-label">Preferences</div>
+            </div>
+        </div>
+
+        <form class="builder-form">
+            <!-- Step 1: User Profile & Financial Goals -->
+            <section class="form-section active" data-section="profile">
+                <div class="section-header">
+                    <h2>Your Profile & Goals</h2>
+                    <p>Tell us about yourself and your investment objectives</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="age">Current Age</label>
+                    <select id="age" name="age" required>
+                        <option value="">Select your age</option>
+                        <option value="18-25">18-25 years</option>
+                        <option value="26-35">26-35 years</option>
+                        <option value="36-45">36-45 years</option>
+                        <option value="46-55">46-55 years</option>
+                        <option value="56+">56+ years</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Investment Goals</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="goal_wealth" name="goals" value="wealth">
+                            <label for="goal_wealth">
+                                <i class="fas fa-chart-line"></i>
+                                Wealth Creation
+                            </label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="goal_retirement" name="goals" value="retirement">
+                            <label for="goal_retirement">
+                                <i class="fas fa-umbrella-beach"></i>
+                                Retirement Planning
+                            </label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="goal_education" name="goals" value="education">
+                            <label for="goal_education">
+                                <i class="fas fa-graduation-cap"></i>
+                                Education Fund
+                            </label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="goal_passive" name="goals" value="passive">
+                            <label for="goal_passive">
+                                <i class="fas fa-coins"></i>
+                                Passive Income
+                            </label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="goal_other" name="goals" value="other">
+                            <label for="goal_other">
+                                <i class="fas fa-ellipsis-h"></i>
+                                Other
+                            </label>
+                        </div>
+                    </div>
+                    <div class="other-goal-input" style="display: none;">
+                        <input type="text" name="other_goal" placeholder="Please specify your goal">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Investment Horizon</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="horizon_short" name="horizon" value="short" required>
+                            <label for="horizon_short">
+                                <i class="fas fa-clock"></i>
+                                Short-term (1-3 years)
+                            </label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="horizon_medium" name="horizon" value="medium">
+                            <label for="horizon_medium">
+                                <i class="fas fa-calendar-alt"></i>
+                                Medium-term (3-7 years)
+                            </label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="horizon_long" name="horizon" value="long">
+                            <label for="horizon_long">
+                                <i class="fas fa-calendar-check"></i>
+                                Long-term (7+ years)
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Step 2: Risk Tolerance & Investment Style -->
+            <section class="form-section" data-section="risk">
+                <div class="section-header">
+                    <h2>Risk Tolerance & Style</h2>
+                    <p>Help us understand your investment preferences</p>
+                </div>
+
+                <div class="form-group">
+                    <label>Risk Appetite</label>
+                    <div class="risk-slider">
+                        <input type="range" id="risk_appetite" name="risk_appetite" min="1" max="5" value="3" required>
+                        <div class="risk-labels">
+                            <span>Low</span>
+                            <span>Medium</span>
+                            <span>High</span>
+                        </div>
+                    </div>
+                    <div class="risk-description">
+                        <p class="risk-detail">Balanced risk & return</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Preferred Investment Types</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="type_stocks" name="investment_types" value="stocks">
+                            <label for="type_stocks">
+                                <i class="fas fa-chart-bar"></i>
+                                Stocks
+                            </label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="type_mutual" name="investment_types" value="mutual">
+                            <label for="type_mutual">
+                                <i class="fas fa-piggy-bank"></i>
+                                Mutual Funds
+                            </label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="type_etf" name="investment_types" value="etf">
+                            <label for="type_etf">
+                                <i class="fas fa-exchange-alt"></i>
+                                ETFs
+                            </label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="type_bonds" name="investment_types" value="bonds">
+                            <label for="type_bonds">
+                                <i class="fas fa-file-invoice-dollar"></i>
+                                Bonds
+                            </label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="type_crypto" name="investment_types" value="crypto">
+                            <label for="type_crypto">
+                                <i class="fab fa-bitcoin"></i>
+                                Cryptocurrency
+                            </label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="type_real_estate" name="investment_types" value="real_estate">
+                            <label for="type_real_estate">
+                                <i class="fas fa-home"></i>
+                                Real Estate
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Investment Style</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="style_active" name="investment_style" value="active" required>
+                            <label for="style_active">
+                                <i class="fas fa-sync"></i>
+                                Active (Regular trading)
+                            </label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="style_passive" name="investment_style" value="passive">
+                            <label for="style_passive">
+                                <i class="fas fa-anchor"></i>
+                                Passive (Long-term holding)
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Step 3: Financial Situation -->
+            <section class="form-section" data-section="financial">
+                <div class="section-header">
+                    <h2>Financial Situation</h2>
+                    <p>Help us understand your investment capacity</p>
+                </div>
+
+                <div class="form-group">
+                    <label>Investment Method</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="method_lump" name="investment_method" value="lump_sum" required>
+                            <label for="method_lump">
+                                <i class="fas fa-money-bill-wave"></i>
+                                Lump Sum
+                            </label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="method_sip" name="investment_method" value="sip">
+                            <label for="method_sip">
+                                <i class="fas fa-calendar-plus"></i>
+                                Monthly SIP
+                            </label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="method_both" name="investment_method" value="both">
+                            <label for="method_both">
+                                <i class="fas fa-tasks"></i>
+                                Both
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Do you have existing investments?</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="existing_yes" name="has_existing" value="yes" required>
+                            <label for="existing_yes">
+                                <i class="fas fa-check-circle"></i>
+                                Yes
+                            </label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="existing_no" name="has_existing" value="no">
+                            <label for="existing_no">
+                                <i class="fas fa-times-circle"></i>
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Investment Amount</label>
+                    <div class="amount-buttons">
+                        <button type="button" class="amount-btn" data-value="100000">₹1,00,000</button>
+                        <button type="button" class="amount-btn" data-value="250000">₹2,50,000</button>
+                        <button type="button" class="amount-btn" data-value="500000">₹5,00,000</button>
+                        <button type="button" class="amount-btn" data-value="1000000">₹10,00,000</button>
+                        <button type="button" class="amount-btn" data-value="custom">Custom</button>
+                    </div>
+                    <div class="custom-amount" style="display: none;">
+                        <span>₹</span>
+                        <input type="number" name="investment_amount" id="investment_amount" placeholder="Enter amount">
+                    </div>
+                </div>
+
+                <div class="existing-investments" style="display: none;">
+                    <div class="form-group">
+                        <label>Your Existing Investments</label>
+                        <div class="investment-item">
+                            <div class="investment-details">
+                                <div class="investment-icon">
+                                    <i class="fas fa-chart-pie"></i>
+                                </div>
+                                <div class="investment-info">
+                                    <h4>Mutual Funds</h4>
+                                    <p>Large Cap Equity</p>
+                                </div>
+                            </div>
+                            <div class="investment-amount">₹2,50,000</div>
+                            <button type="button" class="remove-btn">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <div class="investment-item">
+                            <div class="investment-details">
+                                <div class="investment-icon">
+                                    <i class="fas fa-building"></i>
+                                </div>
+                                <div class="investment-info">
+                                    <h4>Fixed Deposit</h4>
+                                    <p>5 Year Term</p>
+                                </div>
+                            </div>
+                            <div class="investment-amount">₹1,00,000</div>
+                            <button type="button" class="remove-btn">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Step 4: Market Preferences -->
+            <section class="form-section" data-section="preferences">
+                <div class="section-header">
+                    <h2>Market Preferences</h2>
+                    <p>Tell us about your investment preferences in the Indian market</p>
+                </div>
+
+                <div class="form-group">
+                    <label>Preferred Indian Market Segments</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="market_large" name="markets" value="large_cap">
+                            <label for="market_large">
+                                <i class="fas fa-building"></i>
+                                Large Cap
+                            </label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="market_mid" name="markets" value="mid_cap">
+                            <label for="market_mid">
+                                <i class="fas fa-city"></i>
+                                Mid Cap
+                            </label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="market_small" name="markets" value="small_cap">
+                            <label for="market_small">
+                                <i class="fas fa-store"></i>
+                                Small Cap
+                            </label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="market_psus" name="markets" value="psus">
+                            <label for="market_psus">
+                                <i class="fas fa-landmark"></i>
+                                PSUs
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Preferred Indian Sectors</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="sector_it" name="sectors" value="it">
+                            <label for="sector_it">
+                                <i class="fas fa-microchip"></i>
+                                IT & Software
+                            </label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="sector_pharma" name="sectors" value="pharma">
+                            <label for="sector_pharma">
+                                <i class="fas fa-heartbeat"></i>
+                                Pharma & Healthcare
+                            </label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="sector_banking" name="sectors" value="banking">
+                            <label for="sector_banking">
+                                <i class="fas fa-university"></i>
+                                Banking & Finance
+                            </label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="sector_fmcg" name="sectors" value="fmcg">
+                            <label for="sector_fmcg">
+                                <i class="fas fa-shopping-cart"></i>
+                                FMCG
+                            </label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="sector_auto" name="sectors" value="auto">
+                            <label for="sector_auto">
+                                <i class="fas fa-car"></i>
+                                Auto & Manufacturing
+                            </label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="sector_energy" name="sectors" value="energy">
+                            <label for="sector_energy">
+                                <i class="fas fa-bolt"></i>
+                                Energy & Power
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Portfolio Rebalancing</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="rebalance_quarterly" name="rebalance" value="quarterly">
+                            <label for="rebalance_quarterly">
+                                <i class="fas fa-clock"></i>
+                                Quarterly
+                            </label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="rebalance_biannual" name="rebalance" value="biannual">
+                            <label for="rebalance_biannual">
+                                <i class="fas fa-calendar-alt"></i>
+                                Bi-Annual
+                            </label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="rebalance_annual" name="rebalance" value="annual">
+                            <label for="rebalance_annual">
+                                <i class="fas fa-calendar-check"></i>
+                                Annual
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Form Navigation -->
+            <div class="form-navigation">
+                <button type="button" class="btn-secondary btn-prev" disabled>
+                    <i class="fas fa-arrow-left"></i>
+                    Previous
+                </button>
+                <button type="button" class="btn-primary btn-next">
+                    Next
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <button type="button" class="btn-primary btn-generate" style="display: none;" onclick="window.location.href='portfolio-result.html'">
+                    Generate Portfolio
+                    <i class="fas fa-magic"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle
+            const themeToggle = document.getElementById('themeToggle');
+            themeToggle.addEventListener('click', function() {
+                const currentTheme = document.body.getAttribute('data-theme') || 'light';
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                document.body.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                
+                // Toggle icon
+                const icon = themeToggle.querySelector('i');
+                if (newTheme === 'dark') {
+                    icon.classList.remove('fa-moon');
+                    icon.classList.add('fa-sun');
+                } else {
+                    icon.classList.remove('fa-sun');
+                    icon.classList.add('fa-moon');
+                }
+            });
+            
+            // Set theme from localStorage
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                document.body.setAttribute('data-theme', savedTheme);
+                if (savedTheme === 'dark') {
+                    themeToggle.querySelector('i').classList.remove('fa-moon');
+                    themeToggle.querySelector('i').classList.add('fa-sun');
+                }
+            }
+
+            // Mobile menu toggle
+            document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+                document.querySelector('.nav-menu').classList.toggle('active');
+            });
+            
+            // User dropdown toggle
+            document.querySelector('.user-btn').addEventListener('click', function(e) {
+                e.stopPropagation();
+                document.querySelector('.dropdown-menu').classList.toggle('show');
+            });
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.user-dropdown')) {
+                    const dropdown = document.querySelector('.dropdown-menu');
+                    if (dropdown.classList.contains('show')) {
+                        dropdown.classList.remove('show');
+                    }
+                }
+            });
+            
+            // Progress steps logic
+            const sections = document.querySelectorAll('.form-section');
+            const steps = document.querySelectorAll('.progress-step');
+            const btnNext = document.querySelector('.btn-next');
+            const btnPrev = document.querySelector('.btn-prev');
+            const btnGenerate = document.querySelector('.btn-generate');
+            
+            let currentSection = 0;
+            
+            function showSection(index) {
+                sections.forEach(section => section.classList.remove('active'));
+                sections[index].classList.add('active');
+                
+                steps.forEach((step, i) => {
+                    step.classList.remove('active');
+                    if (i < index) {
+                        step.classList.add('completed');
+                    } else if (i === index) {
+                        step.classList.add('active');
+                    } else {
+                        step.classList.remove('completed');
+                    }
+                });
+                
+                btnPrev.disabled = index === 0;
+                
+                if (index === sections.length - 1) {
+                    btnNext.style.display = 'none';
+                    btnGenerate.style.display = 'flex';
+                } else {
+                    btnNext.style.display = 'flex';
+                    btnGenerate.style.display = 'none';
+                }
+            }
+            
+            btnNext.addEventListener('click', function() {
+                if (currentSection < sections.length - 1) {
+                    currentSection++;
+                    showSection(currentSection);
+                }
+            });
+            
+            btnPrev.addEventListener('click', function() {
+                if (currentSection > 0) {
+                    currentSection--;
+                    showSection(currentSection);
+                }
+            });
+            
+            // Risk slider
+            const riskSlider = document.getElementById('risk_appetite');
+            const riskDetail = document.querySelector('.risk-detail');
+            
+            riskSlider.addEventListener('input', function() {
+                const value = this.value;
+                let riskText = '';
+                
+                switch(parseInt(value)) {
+                    case 1:
+                        riskText = 'Conservative - safety first';
+                        break;
+                    case 2:
+                        riskText = 'Moderate - cautious growth';
+                        break;
+                    case 3:
+                        riskText = 'Balanced - moderate growth';
+                        break;
+                    case 4:
+                        riskText = 'Growth - higher returns';
+                        break;
+                    case 5:
+                        riskText = 'Aggressive - maximum growth';
+                        break;
+                }
+                
+                riskDetail.textContent = riskText;
+            });
+            
+            // Amount buttons
+            const amountBtns = document.querySelectorAll('.amount-btn');
+            const customAmountDiv = document.querySelector('.custom-amount');
+            const amountInput = document.getElementById('investment_amount');
+            
+            amountBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    amountBtns.forEach(b => b.classList.remove('selected'));
+                    this.classList.add('selected');
+                    
+                    const value = this.getAttribute('data-value');
+                    if (value === 'custom') {
+                        customAmountDiv.style.display = 'flex';
+                        amountInput.focus();
+                    } else {
+                        customAmountDiv.style.display = 'none';
+                        amountInput.value = value;
+                    }
+                });
+            });
+            
+            // Existing investments toggle
+            const existingInvestments = document.querySelector('.existing-investments');
+            const existingYes = document.getElementById('existing_yes');
+            const existingNo = document.getElementById('existing_no');
+            
+            existingYes.addEventListener('change', function() {
+                if (this.checked) {
+                    existingInvestments.style.display = 'block';
+                }
+            });
+            
+            existingNo.addEventListener('change', function() {
+                if (this.checked) {
+                    existingInvestments.style.display = 'none';
+                }
+            });
+            
+            // Other goal input toggle
+            const goalOther = document.getElementById('goal_other');
+            const otherGoalInput = document.querySelector('.other-goal-input');
+            
+            goalOther.addEventListener('change', function() {
+                otherGoalInput.style.display = this.checked ? 'block' : 'none';
+            });
+            
+            // Remove investment button
+            const removeBtns = document.querySelectorAll('.remove-btn');
+            removeBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const investmentItem = this.closest('.investment-item');
+                    investmentItem.remove();
+                });
+            });
+            
+            // Initialize with first section
+            showSection(0);
+        });
+    </script>
+</body>
+</html> 

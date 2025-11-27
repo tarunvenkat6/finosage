@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finosage AI | Modern Interface</title>
+    <link rel="stylesheet" href="assets/css/modern.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app">
+        <!-- Sidebar Toggle -->
+        <button class="sidebar-toggle" id="sidebarToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <span>Finosage</span>
+                </div>
+                <button class="close-sidebar">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="index.html" class="nav-button">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="ai-research.html" class="nav-button active">
+                    <i class="fas fa-message"></i>
+                    <span>AI Advisor</span>
+                </a>
+                <a href="portfolio-results.html" class="nav-button">
+                    <i class="fas fa-chart-pie"></i>
+                    <span>Portfolio</span>
+                </a>
+                <button class="nav-button">
+                    <i class="fas fa-gear"></i>
+                    <span>Settings</span>
+                </button>
+            </nav>
+
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search...">
+            </div>
+            
+            <div class="conversation-list">
+                <div class="conversation-header">
+                    <button class="new-conversation-btn" id="newConversationBtn">
+                        <i class="fas fa-plus"></i>
+                        <span>New Chat</span>
+                    </button>
+                </div>
+                <div class="conversation-items">
+                    <div class="conversation-item active">
+                        <div class="convo-icon"><i class="fas fa-chart-line"></i></div>
+                        <div class="convo-content">
+                            <div class="convo-title">Portfolio Analysis</div>
+                        </div>
+                    </div>
+                    <div class="conversation-item">
+                        <div class="convo-icon"><i class="fas fa-coins"></i></div>
+                        <div class="convo-content">
+                            <div class="convo-title">Investment Strategies</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-footer-buttons">
+                    <button class="theme-toggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="user-btn">
+                        <div class="avatar">G</div>
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header for mobile view -->
+            <header class="mobile-header">
+                <button class="menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="logo">Finosage AI</div>
+                <div class="mobile-nav">
+                    <a href="index.html" class="nav-link">
+                        <i class="fas fa-home"></i>
+                    </a>
+                </div>
+            </header>
+
+            <!-- Chat Header -->
+            <div class="chat-header">
+                <div class="chat-info">
+                    <h2>Portfolio Analysis</h2>
+                    <div class="model-info">
+                        <span class="model-badge">Claude</span>
+                        <span class="chat-status">Active</span>
+                    </div>
+                </div>
+                <div class="chat-actions">
+                    <a href="index.html" class="action-btn" title="Home">
+                        <i class="fas fa-home"></i>
+                    </a>
+                    <button class="action-btn" title="Share">
+                        <i class="fas fa-share-alt"></i>
+                    </button>
+                    <button class="action-btn" title="New Chat" id="headerNewChatBtn">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Chat Area -->
+            <div class="chat-area" id="chatArea">
+                <!-- Welcome Card -->
+                <div class="welcome-card">
+                    <div class="welcome-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h1>Welcome to Finosage AI</h1>
+                    <p>Your personal financial advisor powered by artificial intelligence</p>
+                    
+                    <div class="capability-cards">
+                        <div class="capability-card">
+                            <i class="fas fa-chart-line"></i>
+                            <h3>Financial Analysis</h3>
+                            <p>Get detailed analysis of investment opportunities and market trends</p>
+                        </div>
+                        <div class="capability-card">
+                            <i class="fas fa-shield-alt"></i>
+                            <h3>Risk Assessment</h3>
+                            <p>Evaluate potential risks in your financial portfolio</p>
+                        </div>
+                        <div class="capability-card">
+                            <i class="fas fa-chart-pie"></i>
+                            <h3>Portfolio Optimization</h3>
+                            <p>Optimize asset allocation for maximum returns</p>
+                        </div>
+                        <div class="capability-card">
+                            <i class="fas fa-piggy-bank"></i>
+                            <h3>Retirement Planning</h3>
+                            <p>Plan for a secure financial future</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Example Messages -->
+                <div class="message-group">
+                    <div class="timestamp">Today, 9:30 AM</div>
+                    <div class="message user-message">
+                        <div class="message-content">
+                            <p>I'd like to analyze my current investment portfolio. I have stocks in tech, healthcare, and some ETFs.</p>
+                        </div>
+                        <div class="message-footer">
+                            <span class="message-time">9:30 AM</span>
+                        </div>
+                    </div>
+                    <div class="message ai-message">
+                        <div class="message-avatar">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="message-content">
+                            <p>I'd be happy to help analyze your portfolio. To provide a comprehensive analysis, I'll need some specific information:</p>
+                            <ol>
+                                <li>The specific stocks and ETFs you currently hold</li>
+                                <li>The approximate percentage allocation for each</li>
+                                <li>Your investment timeline (short, medium, or long-term)</li>
+                                <li>Your risk tolerance (conservative, moderate, or aggressive)</li>
+                            </ol>
+                            <p>With this information, I can evaluate your portfolio's diversification, risk profile, and potential areas for optimization.</p>
+                        </div>
+                        <div class="message-footer">
+                            <span class="message-time">9:31 AM</span>
+                            <div class="message-actions">
+                                <button class="message-action"><i class="fas fa-copy"></i></button>
+                                <button class="message-action"><i class="fas fa-thumbs-up"></i></button>
+                                <button class="message-action"><i class="fas fa-thumbs-down"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="input-area">
+                <div class="suggestion-chips">
+                    <button class="suggestion-chip">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Portfolio Analysis</span>
+                    </button>
+                    <button class="suggestion-chip">
+                        <i class="fas fa-coins"></i>
+                        <span>Investment Strategies</span>
+                    </button>
+                    <button class="suggestion-chip">
+                        <i class="fas fa-university"></i>
+                        <span>Retirement Planning</span>
+                    </button>
+                </div>
+                
+                <div class="input-container">
+                    <button class="input-btn" id="attachBtn">
+                        <i class="fas fa-paperclip"></i>
+                    </button>
+                    <div class="input-wrapper">
+                        <textarea id="userInput" placeholder="Ask me anything about finance..." rows="1"></textarea>
+                    </div>
+                    <button class="input-btn" id="micBtn">
+                        <i class="fas fa-microphone"></i>
+                    </button>
+                    <button class="send-btn" id="sendBtn">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+                
+                <div class="input-footer">
+                    <button class="format-btn" title="Bold">
+                        <i class="fas fa-bold"></i>
+                    </button>
+                    <button class="format-btn" title="Italic">
+                        <i class="fas fa-italic"></i>
+                    </button>
+                    <button class="format-btn" title="Code">
+                        <i class="fas fa-code"></i>
+                    </button>
+                    <div class="spacer"></div>
+                    <div class="input-info">
+                        <i class="fas fa-circle-info"></i>
+                        <span>Powered by Claude</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/js/modern.js"></script>
+</body>
+</html> 

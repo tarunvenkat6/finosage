@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinoSage - Portfolio Dashboard</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Dynamic Background -->
+    <div class="dynamic-background">
+        <div class="gradient-orb"></div>
+        <div class="gradient-orb secondary"></div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <i class="fas fa-chart-line"></i>
+                <span>FinoSage</span>
+            </a>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="advisor.html" class="nav-link">AI Advisor</a>
+                <a href="portfolio-dashboard.html" class="nav-link active">Dashboard</a>
+                <a href="portfolio-analyzer.html" class="nav-link">Analyzer</a>
+                <a href="portfolio-builder.html" class="nav-link">Portfolio Builder</a>
+                <div class="nav-account">
+                    <a href="#" class="nav-link nav-user">
+                        <div class="user-avatar">JS</div>
+                        <span>John Smith</span>
+                    </a>
+                    <div class="account-dropdown">
+                        <a href="#" class="dropdown-item"><i class="fas fa-user"></i> Profile</a>
+                        <a href="#" class="dropdown-item"><i class="fas fa-cog"></i> Settings</a>
+                        <a href="#" class="dropdown-item"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="dashboard-container">
+        <!-- Greeting Section -->
+        <section class="greeting-section">
+            <div class="dashboard-card card-lg-padding">
+                <div class="greeting-header">
+                    <h2>Good afternoon, John</h2>
+                    <div class="last-updated">
+                        <span>Last updated: <time>Today, 2:45 PM</time></span>
+                        <button class="refresh-button" title="Refresh data">
+                            <i class="fas fa-sync-alt"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="market-sentiment">
+                    <i class="fas fa-chart-line sentiment-icon positive"></i>
+                    <span>Markets are up today. Top gainer: Technology sector (+1.5%)</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Summary -->
+        <section class="portfolio-summary dashboard-section">
+            <div class="dashboard-card card-lg-padding">
+                <div class="summary-header">
+                    <h3>Portfolio Overview</h3>
+                    <div class="demo-badge">
+                        <span>Demo Mode</span>
+                        <a href="portfolio-analyzer.html" class="back-btn">
+                            <i class="fas fa-arrow-left"></i> Back
+                        </a>
+                    </div>
+                </div>
+                <div class="summary-content">
+                    <div class="summary-item total-value">
+                        <div class="summary-label">Current Value</div>
+                        <div class="summary-value">₹11,67,429.84</div>
+                        <div class="summary-subtext">Initial Investment: ₹10,00,000.00</div>
+                    </div>
+                    <div class="summary-item profit-loss">
+                        <div class="summary-label">Total Profit/Loss</div>
+                        <div class="summary-value positive">+₹1,67,429.84</div>
+                        <div class="summary-subtext positive">+16.74%</div>
+                    </div>
+                    <div class="summary-item daily-change">
+                        <div class="summary-label">Today's Change</div>
+                        <div class="summary-value positive">+₹12,439.65</div>
+                        <div class="summary-subtext positive">+1.08%</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Overview Cards -->
+        <section class="dashboard-section">
+            <div class="overview-cards">
+                <div class="dashboard-card card-md-padding hover-card overview-card">
+                    <h3>Dividend Income</h3>
+                    <div class="value">₹32,864.50</div>
+                    <div class="change positive">3.29% Yield</div>
+                </div>
+                <div class="dashboard-card card-md-padding hover-card overview-card">
+                    <h3>Volatility</h3>
+                    <div class="value">13.42%</div>
+                    <div class="change neutral">Moderate</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Performance Metrics -->
+        <section class="dashboard-section">
+            <div class="dashboard-card card-lg-padding metrics-container">
+                <h3 class="metrics-title"><i class="fas fa-chart-line"></i> Portfolio Performance</h3>
+                <div class="metrics-grid">
+                    <div class="metric-item">
+                        <div class="metric-label">Current Value</div>
+                        <div class="metric-value">₹11,67,429.84</div>
+                        <div class="metric-info">From ₹10,00,000 initial investment</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label">Total Return</div>
+                        <div class="metric-value positive">+16.74%</div>
+                        <div class="metric-info positive">Outperforming market by 3.2%</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label">Annual Yield</div>
+                        <div class="metric-value">8.37%</div>
+                        <div class="metric-info">Projected annual return</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Asset Allocation -->
+        <section class="allocation-section dashboard-section">
+            <div class="section-header">
+                <h3><i class="fas fa-sitemap"></i> Asset Allocation</h3>
+            </div>
+            <div class="charts-grid">
+                <div class="dashboard-card card-lg-padding chart-container">
+                    <h4>Asset Class Allocation</h4>
+                    <div class="doughnut-container">
+                        <canvas id="allocationChart"></canvas>
+                    </div>
+                </div>
+                <div class="dashboard-card card-lg-padding chart-container">
+                    <h4>Sector Allocation</h4>
+                    <div class="doughnut-container">
+                        <canvas id="sectorChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Holdings Table Section -->
+        <section class="holdings-section dashboard-section">
+            <div class="section-header">
+                <h3><i class="fas fa-list"></i> Portfolio Holdings</h3>
+                <div class="table-controls">
+                    <div class="search-filter">
+                        <input type="text" id="holdingsSearch" placeholder="Search holdings...">
+                        <select id="sectorFilter">
+                            <option value="all">All Sectors</option>
+                            <option value="Technology">Technology</option>
+                            <option value="Financial">Financial</option>
+                            <option value="Energy">Energy</option>
+                            <option value="Healthcare">Healthcare</option>
+                            <option value="Industrial">Industrial</option>
+                        </select>
+                    </div>
+                    <div class="view-options">
+                        <button class="view-btn active" data-view="all"><i class="fas fa-th-list"></i> All</button>
+                        <button class="view-btn" data-view="stocks"><i class="fas fa-chart-line"></i> Stocks</button>
+                        <button class="view-btn" data-view="funds"><i class="fas fa-university"></i> Funds</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-card card-lg-padding holdings-list">
+                <div class="holdings-table">
+                    <table id="holdingsTable">
+                        <thead>
+                            <tr>
+                                <th class="sortable" data-sort="name">Asset <i class="fas fa-sort"></i></th>
+                                <th class="sortable" data-sort="price">Current Price <i class="fas fa-sort"></i></th>
+                                <th class="sortable" data-sort="avg">Avg. Buy Price <i class="fas fa-sort"></i></th>
+                                <th class="sortable" data-sort="quantity">Quantity <i class="fas fa-sort"></i></th>
+                                <th class="sortable" data-sort="current">Current Value <i class="fas fa-sort"></i></th>
+                                <th class="sortable" data-sort="invested">Invested Amount <i class="fas fa-sort"></i></th>
+                                <th class="sortable" data-sort="profit">Profit/Loss <i class="fas fa-sort"></i></th>
+                                <th class="sortable" data-sort="day">1-Day Change <i class="fas fa-sort"></i></th>
+                                <th class="sortable" data-sort="sector">Sector <i class="fas fa-sort"></i></th>
+                                <th class="sortable" data-sort="weight">Weight <i class="fas fa-sort"></i></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Reliance Industries -->
+                            <tr data-asset="RELIANCE" data-sector="Energy">
+                                <td class="asset-info">
+                                    <div class="asset-logo-name">
+                                        <div class="asset-icon">REL</div>
+                                        <div class="asset-name">
+                                            <span class="primary-name">Reliance Industries</span>
+                                            <span class="secondary-name">RELIANCE</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="current-price">₹2,875.45</td>
+                                <td class="avg-price">₹2,374.80</td>
+                                <td class="quantity">90</td>
+                                <td class="current-value">₹2,58,790.50</td>
+                                <td class="invested">₹2,13,732.00</td>
+                                <td class="profit-loss positive">
+                                    <span class="profit-amount">+₹45,058.50</span>
+                                    <span class="profit-percent">+21.08%</span>
+                                </td>
+                                <td class="day-change positive">
+                                    <span class="day-amount">+₹2,916.90</span>
+                                    <span class="day-percent">+1.14%</span>
+                                </td>
+                                <td class="sector">Energy</td>
+                                <td class="weight">22.17%</td>
+                                <td class="expand-row">
+                                    <button class="expand-btn"><i class="fas fa-chevron-down"></i></button>
+                                </td>
+                            </tr>
+                            <tr class="expanded-row" data-asset="RELIANCE">
+                                <td colspan="11">
+                                    <div class="expanded-content">
+                                        <div class="expanded-metrics">
+                                            <div class="metric">
+                                                <span class="metric-label">52-Week High</span>
+                                                <span class="metric-value">₹2,950.00</span>
+                                            </div>
+                                            <div class="metric">
+                                                <span class="metric-label">52-Week Low</span>
+                                                <span class="metric-value">₹2,180.10</span>
+                                            </div>
+                                            <div class="metric">
+                                                <span class="metric-label">P/E Ratio</span>
+                                                <span class="metric-value">28.7</span>
+                                            </div>
+                                            <div class="metric">
+                                                <span class="metric-label">Dividend Yield</span>
+                                                <span class="metric-value">0.9%</span>
+                                            </div>
+                                            <div class="metric">
+                                                <span class="metric-label">Market Cap</span>
+                                                <span class="metric-value">₹19.45L Cr</span>
+                                            </div>
+                                            <div class="metric">
+                                                <span class="metric-label">Beta</span>
+                                                <span class="metric-value">1.15</span>
+                                            </div>
+                                        </div>
+                                        <div class="mini-chart">
+                                            <canvas id="chartRELIANCE" height="100"></canvas>
+                                        </div>
+                                        <div class="action-buttons">
+                                            <button class="action-btn buy-btn">Buy More</button>
+                                            <button class="action-btn sell-btn">Sell</button>
+                                            <button class="action-btn alert-btn">Set Alert</button>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <!-- HDFC Bank -->
+                            <tr data-asset="HDFCBANK" data-sector="Financial">
+                                <td class="asset-info">
+                                    <div class="asset-logo-name">
+                                        <div class="asset-icon">HDFC</div>
+                                        <div class="asset-name">
+                                            <span class="primary-name">HDFC Bank</span>
+                                            <span class="secondary-name">HDFCBANK</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="current-price">₹1,642.85</td>
+                                <td class="avg-price">₹1,485.20</td>
+                                <td class="quantity">120</td>
+                                <td class="current-value">₹1,97,142.00</td>
+                                <td class="invested">₹1,78,224.00</td>
+                                <td class="profit-loss positive">
+                                    <span class="profit-amount">+₹18,918.00</span>
+                                    <span class="profit-percent">+10.61%</span>
+                                </td>
+                                <td class="day-change positive">
+                                    <span class="day-amount">+₹1,843.20</span>
+                                    <span class="day-percent">+0.94%</span>
+                                </td>
+                                <td class="sector">Financial</td>
+                                <td class="weight">16.89%</td>
+                                <td class="expand-row">
+                                    <button class="expand-btn"><i class="fas fa-chevron-down"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Insights -->
+        <section class="ai-insights dashboard-section">
+            <div class="section-header">
+                <h3><i class="fas fa-robot"></i> AI Portfolio Insights</h3>
+            </div>
+            <div class="insights-container">
+                <div class="dashboard-card card-md-padding hover-card insight-card">
+                    <div class="insight-header">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h4>Risk Alert</h4>
+                    </div>
+                    <p>Your portfolio has a high concentration in technology stocks (46.3%). Consider diversifying into other sectors to reduce volatility.</p>
+                </div>
+                <div class="dashboard-card card-md-padding hover-card insight-card">
+                    <div class="insight-header">
+                        <i class="fas fa-chart-line"></i>
+                        <h4>Performance Insight</h4>
+                    </div>
+                    <p>Your portfolio is outperforming the S&P 500 by 2.4% YTD. Key contributors are Microsoft (+12.5%) and Apple (+8.9%).</p>
+                </div>
+                <div class="dashboard-card card-md-padding hover-card insight-card">
+                    <div class="insight-header">
+                        <i class="fas fa-lightbulb"></i>
+                        <h4>Recommendation</h4>
+                    </div>
+                    <p>Consider increasing bond allocation from 14.2% to 20% to better balance risk, especially with current market volatility.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Analytics Tabs Section -->
+        <section class="analytics-section dashboard-section">
+            <div class="section-header">
+                <h3><i class="fas fa-chart-bar"></i> Portfolio Analytics</h3>
+            </div>
+            
+            <div class="dashboard-card analytics-tabs">
+                <div class="tabs-header">
+                    <button class="tab-btn active" data-tab="performance">Performance</button>
+                    <button class="tab-btn" data-tab="risk">Risk Analysis</button>
+                    <button class="tab-btn" data-tab="correlation">Correlation</button>
+                    <button class="tab-btn" data-tab="expenses">Expenses & Income</button>
+                </div>
+                
+                <!-- Tab Content -->
+                <div class="tab-panel active" id="performance-tab">
+                    <div class="analytics-grid">
+                        <div class="analytics-card dashboard-card card-md-padding">
+                            <h4>Historical Performance</h4>
+                            <div class="full-width-chart">
+                                <canvas id="performanceChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="analytics-card dashboard-card card-md-padding">
+                            <h4>Returns Comparison</h4>
+                            <div class="full-width-chart">
+                                <canvas id="returnsComparisonChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-panel" id="risk-tab">
+                    <div class="analytics-grid">
+                        <div class="analytics-card dashboard-card card-md-padding">
+                            <h4>Risk Metrics</h4>
+                            <div class="full-width-chart">
+                                <canvas id="riskMetricsChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="analytics-card dashboard-card card-md-padding">
+                            <h4>Volatility Analysis</h4>
+                            <div class="full-width-chart">
+                                <canvas id="volatilityChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-panel" id="correlation-tab">
+                    <div class="analytics-grid">
+                        <div class="analytics-card dashboard-card card-md-padding wide">
+                            <h4>Asset Correlation Matrix</h4>
+                            <div class="full-width-chart">
+                                <canvas id="correlationMatrix"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-panel" id="expenses-tab">
+                    <div class="analytics-grid">
+                        <div class="analytics-card dashboard-card card-md-padding">
+                            <h4>Expense Analysis</h4>
+                            <div class="full-width-chart">
+                                <canvas id="expenseChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="analytics-card dashboard-card card-md-padding">
+                            <h4>Income Generation</h4>
+                            <div class="full-width-chart">
+                                <canvas id="incomeChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="assets/js/dashboard.js"></script>
+    <script>
+        // Initialize charts when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Enable responsive charts globally
+            Chart.defaults.responsive = true;
+            Chart.defaults.maintainAspectRatio = false;
+            
+            // Custom colors
+            const chartColors = {
+                equity: '#4cca8b', 
+                bonds: '#5d6df3', 
+                gold: '#f59e0b', 
+                cash: '#2c88d9', 
+                realEstate: '#ef4444',
+                technology: '#5d6df3',
+                financial: '#2c88d9',
+                energy: '#f59e0b',
+                healthcare: '#4cca8b',
+                consumer: '#9333ea',
+                industrial: '#64748b'
+            };
+            
+            // Create tooltip config with consistent styling
+            const tooltipConfig = {
+                backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                borderColor: 'rgba(230, 235, 240, 0.9)',
+                borderWidth: 1,
+                titleColor: '#16192c',
+                bodyColor: '#676e8a',
+                bodyFont: {
+                    size: 14
+                },
+                padding: 12,
+                boxPadding: 5,
+                cornerRadius: 6,
+                usePointStyle: true
+            };
+            
+            // Chart global options
+            const defaultChartOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                layout: {
+                    padding: {
+                        top: 10,
+                        right: 25,
+                        bottom: 10,
+                        left: 10
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            boxWidth: 15,
+                            padding: 15,
+                            font: { size: 13 }
+                        }
+                    },
+                    tooltip: tooltipConfig
+                }
+            };
+            
+            // Asset Allocation Chart
+            const allocationCtx = document.getElementById('allocationChart').getContext('2d');
+            const allocationChart = new Chart(allocationCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Equity', 'Bonds', 'Gold', 'Cash', 'Real Estate'],
+                    datasets: [{
+                        data: [65, 15, 10, 5, 5],
+                        backgroundColor: [
+                            chartColors.equity, 
+                            chartColors.bonds, 
+                            chartColors.gold, 
+                            chartColors.cash, 
+                            chartColors.realEstate
+                        ],
+                        borderWidth: 2,
+                        borderColor: '#ffffff'
+                    }]
+                },
+                options: {
+                    ...defaultChartOptions,
+                    cutout: '70%',
+                    plugins: {
+                        ...defaultChartOptions.plugins,
+                        legend: {
+                            position: 'right',
+                            labels: {
+                                boxWidth: 15,
+                                padding: 15,
+                                font: { size: 13 }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Sector Chart
+            const sectorCtx = document.getElementById('sectorChart').getContext('2d');
+            const sectorChart = new Chart(sectorCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Technology', 'Financial', 'Energy', 'Healthcare', 'Consumer', 'Industrial'],
+                    datasets: [{
+                        data: [35, 25, 15, 10, 10, 5],
+                        backgroundColor: [
+                            chartColors.technology,
+                            chartColors.financial,
+                            chartColors.energy,
+                            chartColors.healthcare,
+                            chartColors.consumer,
+                            chartColors.industrial
+                        ],
+                        borderWidth: 2,
+                        borderColor: '#ffffff'
+                    }]
+                },
+                options: {
+                    ...defaultChartOptions,
+                    cutout: '70%',
+                    plugins: {
+                        ...defaultChartOptions.plugins,
+                        legend: {
+                            position: 'right',
+                            labels: {
+                                boxWidth: 15,
+                                padding: 15,
+                                font: { size: 13 }
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // Create mini chart for Reliance
+            const relianceCtx = document.getElementById('chartRELIANCE').getContext('2d');
+            const relianceChart = new Chart(relianceCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                    datasets: [{
+                        label: 'Stock Price',
+                        data: [2400, 2450, 2500, 2600, 2750, 2875],
+                        borderColor: chartColors.energy,
+                        backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                        borderWidth: 2,
+                        tension: 0.3,
+                        fill: true
+                    }]
+                },
+                options: {
+                    ...defaultChartOptions,
+                    plugins: {
+                        ...defaultChartOptions.plugins,
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: {
+                                display: false
+                            }
+                        },
+                        y: {
+                            grid: {
+                                color: 'rgba(230, 235, 240, 0.3)'
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // Performance chart (displayed by default)
+            const performanceCtx = document.getElementById('performanceChart').getContext('2d');
+            const performanceChart = new Chart(performanceCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                    datasets: [{
+                        label: 'Portfolio Value',
+                        data: [1000000, 1023000, 1058000, 1097000, 1105000, 1132000, 1143000, 1148000, 1120000, 1135000, 1152000, 1167429],
+                        borderColor: chartColors.equity,
+                        backgroundColor: 'rgba(76, 202, 139, 0.1)',
+                        borderWidth: 2,
+                        tension: 0.4,
+                        fill: true
+                    }]
+                },
+                options: {
+                    ...defaultChartOptions,
+                    interaction: {
+                        mode: 'index',
+                        intersect: false
+                    },
+                    scales: {
+                        x: {
+                            grid: {
+                                display: false
+                            }
+                        },
+                        y: {
+                            grid: {
+                                color: 'rgba(230, 235, 240, 0.3)'
+                            },
+                            ticks: {
+                                callback: function(value) {
+                                    return '₹' + (value/100000).toFixed(1) + 'L';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // Create returns comparison chart
+            const returnsCtx = document.getElementById('returnsComparisonChart').getContext('2d');
+            const returnsChart = new Chart(returnsCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['1M', '3M', '6M', 'YTD', '1Y', '3Y', '5Y'],
+                    datasets: [{
+                        label: 'Your Portfolio',
+                        data: [2.4, 5.8, 9.7, 16.7, 22.3, 48.2, 72.5],
+                        backgroundColor: chartColors.equity
+                    }, {
+                        label: 'Benchmark',
+                        data: [1.8, 4.2, 7.5, 13.5, 19.2, 42.8, 65.2],
+                        backgroundColor: chartColors.bonds
+                    }]
+                },
+                options: {
+                    ...defaultChartOptions,
+                    scales: {
+                        x: {
+                            grid: {
+                                display: false
+                            }
+                        },
+                        y: {
+                            grid: {
+                                color: 'rgba(230, 235, 240, 0.3)'
+                            },
+                            ticks: {
+                                callback: function(value) {
+                                    return value + '%';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Chart creation functions for other tabs
+            const createRiskCharts = () => {
+                // Risk metrics chart
+                const riskCtx = document.getElementById('riskMetricsChart').getContext('2d');
+                new Chart(riskCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Volatility', 'Beta', 'Sharpe Ratio', 'Sortino Ratio', 'Max Drawdown'],
+                        datasets: [{
+                            label: 'Your Portfolio',
+                            data: [13.42, 0.95, 1.85, 2.1, 15.2],
+                            backgroundColor: chartColors.financial
+                        }, {
+                            label: 'Benchmark',
+                            data: [15.8, 1, 1.2, 1.4, 18.5],
+                            backgroundColor: chartColors.technology
+                        }]
+                    },
+                    options: {
+                        ...defaultChartOptions,
+                        scales: {
+                            x: {
+                                grid: {
+                                    display: false
+                                }
+                            },
+                            y: {
+                                grid: {
+                                    color: 'rgba(230, 235, 240, 0.3)'
+                                }
+                            }
+                        }
+                    }
+                });
+                
+                // Volatility chart
+                const volatilityCtx = document.getElementById('volatilityChart').getContext('2d');
+                new Chart(volatilityCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                        datasets: [{
+                            label: 'Portfolio Volatility',
+                            data: [12.4, 13.2, 12.8, 14.1, 15.2, 13.9, 13.1, 12.6, 13.8, 14.5, 13.7, 13.4],
+                            borderColor: chartColors.financial,
+                            backgroundColor: 'rgba(44, 136, 217, 0.1)',
+                            borderWidth: 2,
+                            tension: 0.4,
+                            fill: true
+                        }, {
+                            label: 'Market Volatility',
+                            data: [14.8, 15.6, 15.2, 16.3, 17.5, 16.2, 15.5, 14.9, 16.1, 16.8, 15.9, 15.8],
+                            borderColor: chartColors.technology,
+                            backgroundColor: 'rgba(93, 109, 243, 0.1)',
+                            borderWidth: 2,
+                            borderDash: [5, 5],
+                            tension: 0.4,
+                            fill: false
+                        }]
+                    },
+                    options: {
+                        ...defaultChartOptions,
+                        scales: {
+                            x: {
+                                grid: {
+                                    display: false
+                                }
+                            },
+                            y: {
+                                grid: {
+                                    color: 'rgba(230, 235, 240, 0.3)'
+                                },
+                                ticks: {
+                                    callback: function(value) {
+                                        return value + '%';
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            };
+            
+            const createCorrelationChart = () => {
+                const correlationCtx = document.getElementById('correlationMatrix').getContext('2d');
+                
+                // Define correlation data
+                const labels = ['REL', 'HDFC', 'INFY', 'TCS', 'AAPL', 'MSFT'];
+                const correlationData = [
+                    [1, 0.4, 0.2, 0.25, 0.1, 0.15],  // REL
+                    [0.4, 1, 0.3, 0.35, 0.2, 0.25],  // HDFC
+                    [0.2, 0.3, 1, 0.8, 0.5, 0.6],    // INFY
+                    [0.25, 0.35, 0.8, 1, 0.45, 0.55], // TCS
+                    [0.1, 0.2, 0.5, 0.45, 1, 0.7],   // AAPL
+                    [0.15, 0.25, 0.6, 0.55, 0.7, 1]  // MSFT
+                ];
+                
+                // Create datasets for bar chart (alternative to heatmap)
+                const datasets = [];
+                
+                for (let i = 0; i < labels.length; i++) {
+                    datasets.push({
+                        label: labels[i],
+                        data: correlationData[i],
+                        backgroundColor: getCorrelationColor(correlationData[i]),
+                        borderColor: 'rgba(255, 255, 255, 0.5)',
+                        borderWidth: 1,
+                        borderSkipped: false,
+                        borderRadius: 4
+                    });
+                }
+                
+                // Function to get color based on correlation value
+                function getCorrelationColor(values) {
+                    return values.map(value => {
+                        const alpha = 0.8;
+                        if (value === 1) return `rgba(44, 136, 217, ${alpha})`;
+                        if (value >= 0.7) return `rgba(76, 202, 139, ${alpha})`;
+                        if (value >= 0.4) return `rgba(245, 158, 11, ${alpha})`;
+                        if (value >= 0.2) return `rgba(236, 201, 75, ${alpha})`;
+                        return `rgba(239, 68, 68, ${alpha})`;
+                    });
+                }
+                
+                new Chart(correlationCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: datasets
+                    },
+                    options: {
+                        ...defaultChartOptions,
+                        indexAxis: 'y',
+                        scales: {
+                            x: {
+                                stacked: false,
+                                beginAtZero: true,
+                                max: 1,
+                                grid: {
+                                    display: true,
+                                    color: 'rgba(230, 235, 240, 0.2)'
+                                },
+                                ticks: {
+                                    callback: function(value) {
+                                        return value.toFixed(1);
+                                    }
+                                }
+                            },
+                            y: {
+                                stacked: true,
+                                grid: {
+                                    display: false
+                                }
+                            }
+                        },
+                        plugins: {
+                            ...defaultChartOptions.plugins,
+                            legend: {
+                                position: 'right',
+                                labels: {
+                                    boxWidth: 12,
+                                    padding: 15,
+                                    font: { size: 12 }
+                                }
+                            },
+                            tooltip: {
+                                ...tooltipConfig,
+                                callbacks: {
+                                    title(context) {
+                                        return 'Correlation';
+                                    },
+                                    label(context) {
+                                        const value = context.raw;
+                                        const sourceAsset = context.dataset.label;
+                                        const targetAsset = context.chart.data.labels[context.dataIndex];
+                                        return `${sourceAsset} → ${targetAsset}: ${value.toFixed(2)}`;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            };
+            
+            const createExpenseCharts = () => {
+                // Expense chart
+                const expenseCtx = document.getElementById('expenseChart').getContext('2d');
+                new Chart(expenseCtx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['Management Fees', 'Trading Fees', 'Custodian Fees', 'Taxes', 'Other'],
+                        datasets: [{
+                            data: [55, 20, 10, 12, 3],
+                            backgroundColor: [
+                                chartColors.financial,
+                                chartColors.technology, 
+                                chartColors.energy,
+                                chartColors.healthcare,
+                                chartColors.consumer
+                            ],
+                            borderWidth: 2,
+                            borderColor: '#ffffff'
+                        }]
+                    },
+                    options: {
+                        ...defaultChartOptions,
+                        plugins: {
+                            ...defaultChartOptions.plugins,
+                            tooltip: {
+                                ...tooltipConfig,
+                                callbacks: {
+                                    label: function(context) {
+                                        const label = context.label || '';
+                                        const value = context.raw || 0;
+                                        const total = context.dataset.data.reduce((acc, val) => acc + val, 0);
+                                        const percentage = Math.round((value / total) * 100);
+                                        return `${label}: ${percentage}% (₹${value/100 * 8289})`;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+                
+                // Income chart
+                const incomeCtx = document.getElementById('incomeChart').getContext('2d');
+                new Chart(incomeCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Dividends', 'Interest', 'Capital Gains'],
+                        datasets: [{
+                            data: [65, 15, 20],
+                            backgroundColor: [
+                                chartColors.equity,
+                                chartColors.bonds,
+                                chartColors.gold
+                            ],
+                            borderWidth: 2,
+                            borderColor: '#ffffff'
+                        }]
+                    },
+                    options: {
+                        ...defaultChartOptions,
+                        cutout: '60%',
+                        plugins: {
+                            ...defaultChartOptions.plugins,
+                            tooltip: {
+                                ...tooltipConfig,
+                                callbacks: {
+                                    label: function(context) {
+                                        const label = context.label || '';
+                                        const value = context.raw || 0;
+                                        const total = context.dataset.data.reduce((acc, val) => acc + val, 0);
+                                        const percentage = Math.round((value / total) * 100);
+                                        return `${label}: ${percentage}% (₹${value * 600})`;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            };
+
+            // Initialize other charts only when their tabs are activated
+            let initializedCharts = { 
+                performance: true, 
+                risk: false, 
+                correlation: false, 
+                expenses: false 
+            };
+            
+            // Handle tab switching and initialize charts on demand
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const tabId = this.dataset.tab;
+                    
+                    // Deactivate all tabs
+                    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+                    
+                    // Activate selected tab
+                    this.classList.add('active');
+                    const panel = document.getElementById(`${tabId}-tab`);
+                    panel.classList.add('active');
+                    
+                    // Load charts for the tab if not already loaded
+                    if (!initializedCharts[tabId]) {
+                        if (tabId === 'risk') {
+                            createRiskCharts();
+                        } else if (tabId === 'correlation') {
+                            createCorrelationChart();
+                        } else if (tabId === 'expenses') {
+                            createExpenseCharts();
+                        }
+                        initializedCharts[tabId] = true;
+                        
+                        // Force resize charts after a small delay to ensure proper rendering
+                        setTimeout(() => {
+                            window.dispatchEvent(new Event('resize'));
+                        }, 100);
+                    }
+                });
+            });
+            
+            // Add event listeners for expand buttons
+            document.querySelectorAll('.expand-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const assetRow = this.closest('tr');
+                    const assetId = assetRow.dataset.asset;
+                    const expandedRow = document.querySelector(`.expanded-row[data-asset="${assetId}"]`);
+                    expandedRow.classList.toggle('active');
+                    this.querySelector('i').classList.toggle('fa-chevron-down');
+                    this.querySelector('i').classList.toggle('fa-chevron-up');
+                });
+            });
+        });
+
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+        
+        // User dropdown toggle
+        document.querySelector('.nav-user').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector('.account-dropdown').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

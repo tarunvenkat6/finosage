@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinoSage - AI Portfolio Advisor</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/advisor.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Chat interface styles */
+        .chat-interface {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 400px;
+            height: 600px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .chat-header {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: #6366f1;
+            color: white;
+        }
+        
+        .chat-header h3 {
+            margin: 0;
+            flex-grow: 1;
+        }
+        
+        .close-chat {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        
+        .conversation-list {
+            display: none;
+            flex-direction: column;
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 15px;
+        }
+        
+        .conversation-item {
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .conversation-item:hover {
+            background: #f0f0f5;
+        }
+        
+        .conversation-item h4 {
+            margin: 0 0 5px 0;
+        }
+        
+        .conversation-item .date {
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        .chat-messages {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .message {
+            max-width: 80%;
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            border-radius: 18px;
+            position: relative;
+            line-height: 1.5;
+        }
+        
+        .message.user {
+            background: #e6e6fa;
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+        
+        .message.assistant {
+            background: #f0f0f5;
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+        
+        .message-form {
+            display: flex;
+            padding: 15px;
+            border-top: 1px solid #eee;
+        }
+        
+        .message-input {
+            flex-grow: 1;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            margin-right: 10px;
+        }
+        
+        .send-button {
+            background: #6366f1;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .conversations-button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-right: 15px;
+        }
+        
+        .new-chat-button {
+            position: absolute;
+            bottom: 80px;
+            right: 15px;
+            background: #6366f1;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+        
+        .chat-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #6366f1;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            z-index: 999;
+        }
+        
+        .typing-indicator {
+            display: none;
+            align-self: flex-start;
+            background: #f0f0f5;
+            padding: 10px 15px;
+            border-radius: 18px;
+            margin-bottom: 10px;
+        }
+        
+        .typing-indicator span {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #999;
+            border-radius: 50%;
+            animation: typing 1s infinite ease-in-out;
+            margin-right: 5px;
+        }
+        
+        .typing-indicator span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .typing-indicator span:nth-child(3) {
+            animation-delay: 0.4s;
+            margin-right: 0;
+        }
+        
+        @keyframes typing {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Dynamic Background -->
+    <div class="dynamic-background">
+        <div class="gradient-orb"></div>
+        <div class="gradient-orb"></div>
+        <div class="gradient-orb"></div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">
+                <i class="fas fa-chart-line"></i>
+                <span>FinoSage</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="#" class="active">AI Advisor</a>
+                <div class="user-profile" id="userProfileSection">
+                    <i class="fas fa-user-circle"></i>
+                    <span id="userName">Guest</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="advisor-container">
+        <!-- Welcome Section -->
+        <section class="welcome-section">
+            <h1>AI Portfolio Advisor</h1>
+            <p>Choose a tool to get started with AI-powered portfolio management</p>
+        </section>
+
+        <!-- Tools Grid -->
+        <section class="tools-grid">
+            <!-- Portfolio Analyzer Tool -->
+            <div class="tool-card" data-tool="analyzer">
+                <div class="tool-icon">
+                    <i class="fas fa-chart-pie"></i>
+                </div>
+                <h2>Portfolio Analyzer</h2>
+                <p>Analyze your current portfolio performance, get AI insights, and track your investments in real-time.</p>
+                <ul class="tool-features">
+                    <li><i class="fas fa-check"></i> Real-time portfolio tracking</li>
+                    <li><i class="fas fa-check"></i> AI-powered performance analysis</li>
+                    <li><i class="fas fa-check"></i> Risk assessment</li>
+                    <li><i class="fas fa-check"></i> Investment recommendations</li>
+                </ul>
+                <button class="tool-select-btn" data-tool="analyzer">
+                    <span>Launch Analyzer</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <!-- AI Research Tool -->
+            <div class="tool-card" data-tool="research">
+                <div class="tool-icon">
+                    <i class="fas fa-search-dollar"></i>
+                </div>
+                <h2>AI Research</h2>
+                <p>Get comprehensive market research, trend analysis, and AI-powered insights for informed decision-making.</p>
+                <ul class="tool-features">
+                    <li><i class="fas fa-check"></i> Market trend analysis</li>
+                    <li><i class="fas fa-check"></i> News sentiment analysis</li>
+                    <li><i class="fas fa-check"></i> Sector performance tracking</li>
+                    <li><i class="fas fa-check"></i> Predictive analytics</li>
+                </ul>
+                <button class="tool-select-btn" data-tool="research">
+                    <span>Launch Research</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <!-- AI Portfolio Builder -->
+            <div class="tool-card" data-tool="builder">
+                <div class="tool-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h2>AI Portfolio Builder</h2>
+                <p>Create and optimize your portfolio using AI algorithms for maximum returns and risk management.</p>
+                <ul class="tool-features">
+                    <li><i class="fas fa-check"></i> Smart portfolio construction</li>
+                    <li><i class="fas fa-check"></i> Risk optimization</li>
+                    <li><i class="fas fa-check"></i> Asset allocation</li>
+                    <li><i class="fas fa-check"></i> Performance optimization</li>
+                </ul>
+                <button class="tool-select-btn" data-tool="builder">
+                    <span>Launch Builder</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Chat Interface -->
+    <button class="chat-button" id="chatButton">
+        <i class="fas fa-comment-dots"></i>
+    </button>
+
+    <div class="chat-interface" id="chatInterface">
+        <div class="chat-header">
+            <button class="conversations-button" id="conversationsButton">
+                <i class="fas fa-list"></i>
+            </button>
+            <h3>Financial Assistant</h3>
+            <button class="close-chat" id="closeChat">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="conversation-list" id="conversationList">
+            <!-- Conversation history will be loaded here -->
+        </div>
+        
+        <div class="chat-messages" id="chatMessages">
+            <!-- Welcome message -->
+            <div class="message assistant">
+                <p>Hello! I'm your FinoSage AI Assistant. How can I help with your financial questions today?</p>
+            </div>
+        </div>
+        
+        <div class="typing-indicator" id="typingIndicator">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        
+        <form class="message-form" id="messageForm">
+            <input 
+                type="text" 
+                class="message-input" 
+                id="messageInput" 
+                placeholder="Type your message..." 
+                autocomplete="off"
+            >
+            <button type="submit" class="send-button">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </form>
+        
+        <button class="new-chat-button" id="newChatButton" title="New Conversation">
+            <i class="fas fa-plus"></i>
+        </button>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/api-client.js"></script>
+    <script src="assets/js/advisor.js"></script>
+</body>
+</html> 

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinoSage - Portfolio Analyzer</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/advisor.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Dynamic Background -->
+    <div class="dynamic-background">
+        <div class="gradient-orb"></div>
+        <div class="gradient-orb"></div>
+        <div class="gradient-orb"></div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">
+                <i class="fas fa-chart-line"></i>
+                <span>FinoSage</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="advisor.html">AI Advisor</a>
+                <a href="#" class="active">Portfolio Analyzer</a>
+                <div class="user-profile" id="userProfileSection">
+                    <i class="fas fa-user-circle"></i>
+                    <span id="userName">Guest</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="advisor-container">
+        <!-- Welcome Section -->
+        <section class="welcome-section">
+            <h1>Portfolio Analyzer</h1>
+            <p>Gain deep insights into your investments with our AI-powered portfolio analysis tools</p>
+        </section>
+
+        <!-- Options Grid -->
+        <section class="tools-grid">
+            <!-- Connect Broker Option -->
+            <div class="tool-card" data-tool="connect-broker">
+                <div class="tool-icon">
+                    <i class="fas fa-link"></i>
+                </div>
+                <h2>Connect Broker</h2>
+                <p>Connect your investment accounts to analyze your actual portfolio performance with real-time data.</p>
+                <ul class="tool-features">
+                    <li><i class="fas fa-check"></i> Secure API connections</li>
+                    <li><i class="fas fa-check"></i> Real-time portfolio tracking</li>
+                    <li><i class="fas fa-check"></i> Automatic holdings updates</li>
+                    <li><i class="fas fa-check"></i> Trade history analysis</li>
+                </ul>
+                <button class="tool-select-btn" data-tool="connect-broker">
+                    <span>Connect Account</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <!-- Demo Portfolio Option -->
+            <div class="tool-card" data-tool="demo-portfolio">
+                <div class="tool-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h2>Demo Portfolio</h2>
+                <p>Explore the analyzer features with our pre-built sample portfolio to see how the AI can optimize your investments.</p>
+                <ul class="tool-features">
+                    <li><i class="fas fa-check"></i> Sample diversified portfolio</li>
+                    <li><i class="fas fa-check"></i> AI-powered insights</li>
+                    <li><i class="fas fa-check"></i> Risk assessment demo</li>
+                    <li><i class="fas fa-check"></i> Performance projections</li>
+                </ul>
+                <button class="tool-select-btn" data-tool="demo-portfolio">
+                    <span>Try Demo</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <script src="assets/js/portfolio-analyzer.js"></script>
+</body>
+</html> 

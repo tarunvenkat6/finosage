@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinoSage - Portfolio Results</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/portfolio-results.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Dynamic Background -->
+    <div class="dynamic-background">
+        <div class="gradient-orb"></div>
+        <div class="gradient-orb"></div>
+        <div class="gradient-orb"></div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="nav-logo">
+                <i class="fas fa-chart-line"></i>
+                <span>FinoSage</span>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="advisor.html">AI Advisor</a>
+                <a href="portfolio-analyzer.html">Analyzer</a>
+                <a href="portfolio-builder.html">Portfolio Builder</a>
+                <a href="portfolio-dashboard.html">Dashboard</a>
+            </div>
+            <div class="user-section">
+                <div class="user-dropdown">
+                    <button class="user-dropdown-btn" id="userDropdownBtn">
+                        <i class="fas fa-user-circle"></i>
+                        <span id="userName">Guest</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="user-dropdown-content" id="userDropdownContent">
+                        <a href="#"><i class="fas fa-user"></i> Profile</a>
+                        <a href="#"><i class="fas fa-cog"></i> Settings</a>
+                        <a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Header -->
+        <header>
+            <h1>Your Personalized Portfolio</h1>
+            <p>AI-powered analysis and recommendations tailored to your investment goals</p>
+        </header>
+
+        <!-- Results Container -->
+        <div class="results-container">
+            <!-- Overview and Returns Section -->
+            <div class="overview-returns-grid">
+                <!-- Portfolio Overview Section -->
+                <section class="portfolio-overview">
+                    <h2>Portfolio Overview</h2>
+                    <div class="overview-grid">
+                        <div class="overview-item">
+                            <h3>Risk Level</h3>
+                            <p class="risk-level">Medium</p>
+                        </div>
+                        <div class="overview-item">
+                            <h3>Last Updated</h3>
+                            <p class="last-updated">Today</p>
+                        </div>
+                        <div class="overview-item">
+                            <h3>Risk Score</h3>
+                            <p class="risk-score">6.5</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Expected Returns Section -->
+                <section class="expected-returns">
+                    <h2>Expected Returns</h2>
+                    <div class="returns-grid">
+                        <div class="return-item">
+                            <span class="return-label">Conservative</span>
+                            <span class="return-value" id="conservativeReturn">8%</span>
+                        </div>
+                        <div class="return-item">
+                            <span class="return-label">Moderate</span>
+                            <span class="return-value" id="moderateReturn">12%</span>
+                        </div>
+                        <div class="return-item">
+                            <span class="return-label">Aggressive</span>
+                            <span class="return-value" id="aggressiveReturn">16%</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Investment Allocation Breakdown -->
+            <section class="allocation-section">
+                <h2>Investment Allocation Breakdown</h2>
+                <div class="allocation-grid">
+                    <div class="allocation-card">
+                        <div class="allocation-header">
+                            <i class="fas fa-chart-pie"></i>
+                            <h3>Asset Allocation</h3>
+                        </div>
+                        <div class="allocation-content">
+                            <div class="allocation-chart">
+                                <canvas id="allocationChart"></canvas>
+                            </div>
+                            <div class="allocation-details">
+                                <div class="allocation-item">
+                                    <span class="label">Equity</span>
+                                    <span class="value" id="equityAllocation">60%</span>
+                                    <p class="reason" id="equityReason">Based on your moderate risk profile and long-term growth goals</p>
+                                </div>
+                                <div class="allocation-item">
+                                    <span class="label">Debt</span>
+                                    <span class="value" id="debtAllocation">30%</span>
+                                    <p class="reason" id="debtReason">Provides stability and regular income</p>
+                                </div>
+                                <div class="allocation-item">
+                                    <span class="label">Alternatives</span>
+                                    <span class="value" id="alternativesAllocation">10%</span>
+                                    <p class="reason" id="alternativesReason">Diversification and inflation hedge</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recommended Asset Classes -->
+            <section class="asset-classes-section">
+                <h2>Recommended Asset Classes</h2>
+                <div class="asset-classes-grid">
+                    <div class="asset-class-card">
+                        <div class="asset-class-header">
+                            <i class="fas fa-chart-line"></i>
+                            <h3>Equity</h3>
+                        </div>
+                        <div class="asset-class-content">
+                            <ul class="asset-list">
+                                <li>Stocks</li>
+                                <li>ETFs</li>
+                                <li>Mutual Funds</li>
+                            </ul>
+                            <p class="justification" id="equityJustification">Selected based on your moderate risk tolerance and long-term investment horizon</p>
+                        </div>
+                    </div>
+                    <div class="asset-class-card">
+                        <div class="asset-class-header">
+                            <i class="fas fa-hand-holding-usd"></i>
+                            <h3>Debt</h3>
+                        </div>
+                        <div class="asset-class-content">
+                            <ul class="asset-list">
+                                <li>Bonds</li>
+                                <li>Fixed Deposits</li>
+                                <li>Debt Funds</li>
+                            </ul>
+                            <p class="justification" id="debtJustification">Provides stable returns and reduces portfolio volatility</p>
+                        </div>
+                    </div>
+                    <div class="asset-class-card">
+                        <div class="asset-class-header">
+                            <i class="fas fa-coins"></i>
+                            <h3>Alternatives</h3>
+                        </div>
+                        <div class="asset-class-content">
+                            <ul class="asset-list">
+                                <li>REITs</li>
+                                <li>Gold</li>
+                                <li>Commodities</li>
+                            </ul>
+                            <p class="justification" id="alternativesJustification">Diversification and protection against market volatility</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Investment Recommendations -->
+            <section class="recommendations-section">
+                <h2>Top Investment Picks</h2>
+                <div class="recommendations-grid">
+                    <div class="recommendation-card">
+                        <div class="recommendation-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h3>Stocks</h3>
+                        <div class="investment-list">
+                            <div class="investment-item">
+                                <span class="name">Reliance Industries</span>
+                                <span class="sector">Energy</span>
+                                <span class="cagr">15%</span>
+                            </div>
+                            <div class="investment-item">
+                                <span class="name">HDFC Bank</span>
+                                <span class="sector">Banking</span>
+                                <span class="cagr">12%</span>
+                            </div>
+                            <div class="investment-item">
+                                <span class="name">TCS</span>
+                                <span class="sector">IT</span>
+                                <span class="cagr">14%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="recommendation-card">
+                        <div class="recommendation-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <h3>Mutual Funds</h3>
+                        <div class="investment-list">
+                            <div class="investment-item">
+                                <span class="name">SBI Blue Chip Fund</span>
+                                <span class="sector">Large Cap</span>
+                                <span class="cagr">14%</span>
+                            </div>
+                            <div class="investment-item">
+                                <span class="name">Mirae Asset Emerging Bluechip</span>
+                                <span class="sector">Mid Cap</span>
+                                <span class="cagr">18%</span>
+                            </div>
+                            <div class="investment-item">
+                                <span class="name">Axis Small Cap Fund</span>
+                                <span class="sector">Small Cap</span>
+                                <span class="cagr">20%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="recommendation-card">
+                        <div class="recommendation-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>ETFs</h3>
+                        <div class="investment-list">
+                            <div class="investment-item">
+                                <span class="name">Nippon India ETF Nifty 50</span>
+                                <span class="sector">Large Cap</span>
+                                <span class="cagr">13%</span>
+                            </div>
+                            <div class="investment-item">
+                                <span class="name">HDFC Nifty Bank ETF</span>
+                                <span class="sector">Banking</span>
+                                <span class="cagr">11%</span>
+                            </div>
+                            <div class="investment-item">
+                                <span class="name">SBI ETF Sensex</span>
+                                <span class="sector">Large Cap</span>
+                                <span class="cagr">12%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Performance Metrics -->
+            <section class="metrics-section">
+                <h2>Performance Metrics</h2>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <i class="fas fa-chart-line"></i>
+                            <h3>Volatility Analysis</h3>
+                        </div>
+                        <div class="metric-content">
+                            <div class="volatility-chart">
+                                <canvas id="volatilityChart"></canvas>
+                            </div>
+                            <div class="volatility-details">
+                                <div class="volatility-item">
+                                    <span class="label">Risk Level</span>
+                                    <span class="value" id="volatilityLevel">Medium</span>
+                                </div>
+                                <div class="volatility-item">
+                                    <span class="label">Sharpe Ratio</span>
+                                    <span class="value" id="sharpeRatio">1.2</span>
+                                </div>
+                                <div class="volatility-item">
+                                    <span class="label">Max Drawdown</span>
+                                    <span class="value" id="maxDrawdown">-15%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-header">
+                            <i class="fas fa-calendar-alt"></i>
+                            <h3>Projected Outcomes</h3>
+                        </div>
+                        <div class="metric-content">
+                            <div class="projection-chart">
+                                <canvas id="projectionChart"></canvas>
+                            </div>
+                            <div class="projection-details">
+                                <div class="projection-item">
+                                    <span class="label">1 Year</span>
+                                    <span class="value" id="oneYearReturn">12%</span>
+                                </div>
+                                <div class="projection-item">
+                                    <span class="label">5 Years</span>
+                                    <span class="value" id="fiveYearReturn">75%</span>
+                                </div>
+                                <div class="projection-item">
+                                    <span class="label">10 Years</span>
+                                    <span class="value" id="tenYearReturn">200%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Investment Strategy -->
+            <section class="strategy-section">
+                <h2>Investment Strategy</h2>
+                <div class="strategy-grid">
+                    <div class="strategy-card">
+                        <div class="strategy-header">
+                            <i class="fas fa-piggy-bank"></i>
+                            <h3>Investment Approach</h3>
+                        </div>
+                        <div class="strategy-content">
+                            <div class="strategy-item">
+                                <span class="label">Recommended Method</span>
+                                <span class="value" id="investmentMethod">SIP</span>
+                            </div>
+                            <p class="justification" id="investmentJustification">SIP is recommended for your profile as it helps in averaging out market volatility and building wealth systematically</p>
+                        </div>
+                    </div>
+                    <div class="strategy-card">
+                        <div class="strategy-header">
+                            <i class="fas fa-balance-scale"></i>
+                            <h3>Rebalancing Strategy</h3>
+                        </div>
+                        <div class="strategy-content">
+                            <div class="strategy-item">
+                                <span class="label">Frequency</span>
+                                <span class="value" id="rebalancingFrequency">Semi-annual</span>
+                            </div>
+                            <p class="justification" id="rebalancingJustification">Regular rebalancing helps maintain your target asset allocation and risk profile</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="action-btn primary-btn" id="savePortfolio">
+                    <i class="fas fa-save"></i>
+                    Save Portfolio
+                </button>
+                <button class="action-btn secondary-btn" id="exportReport">
+                    <i class="fas fa-file-excel"></i>
+                    Export to Excel
+                </button>
+                <button class="action-btn tertiary-btn" id="startOver" onclick="window.location.href='portfolio-builder.html'">
+                    <i class="fas fa-redo"></i>
+                    Start Over
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script src="assets/js/portfolio-results.js"></script>
+    <script>
+        // Toggle theme functionality
+        const themeToggle = document.querySelector('.theme-toggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            if (document.body.classList.contains('dark-mode')) {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                localStorage.setItem('theme', 'light');
+            }
+            
+            // Update charts if they exist
+            const portfolioResults = window.portfolioResults;
+            if (portfolioResults) {
+                if (portfolioResults.allocationChart) portfolioResults.allocationChart.update();
+                if (portfolioResults.volatilityChart) portfolioResults.volatilityChart.update();
+                if (portfolioResults.projectionChart) portfolioResults.projectionChart.update();
+            }
+        });
+
+        // Check for saved theme
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+        
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+        });
+        
+        // User dropdown toggle
+        const userDropdownBtn = document.getElementById('userDropdownBtn');
+        const userDropdownContent = document.getElementById('userDropdownContent');
+        
+        userDropdownBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            userDropdownContent.classList.toggle('show');
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', () => {
+            userDropdownContent.classList.remove('show');
+        });
+        
+        userDropdownContent.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+    </script>
+</body>
+</html> 
